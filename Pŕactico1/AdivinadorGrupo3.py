@@ -1,5 +1,6 @@
 import random
 
+#Esto es una funcion!!
 def adivina(intentos, numero):
     res= random.randint(0, 100)
     while intentos>0:
@@ -12,8 +13,7 @@ def adivina(intentos, numero):
                 numero = int(input('Ingrese otro entero: '))
             else:
                 print('Perdiste :( \nEl número era',res)
-
-
+#main
 
 oportunidades = int(input('Ingrese cantidad de intentos: '))
 guess = int(input('Ingrese un entero: '))
