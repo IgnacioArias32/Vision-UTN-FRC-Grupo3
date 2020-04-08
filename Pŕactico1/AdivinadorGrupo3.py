@@ -21,6 +21,4 @@ guess = int(input('Ingrese un entero: '))
 adivina(oportunidades, guess)
 
 
-//Martin borra esto
-
 
