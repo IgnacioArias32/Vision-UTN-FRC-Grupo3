@@ -1,8 +1,19 @@
 import numpy as np
 import cv2
 
+ix , iy = -1, -1
+
+def recortar ( event , x , y , flags , param ) :
+    global ix , iy , crop_img
+    if event == cv2.EVENT_LBUTTONDOWN:
+        ix , iy = x , y
+    elif event == cv2.EVENT_MOUSEMOVE:
+                crop_img = img[iy:y, ix:x]
+
 
 def translate(image, x, y):
+
+
     (h, w) = (image.shape[0], image.shape[1])
     M = np.float32([[1, 0, x],
                     [0, 1, y]])
@@ -28,11 +39,28 @@ def Euclidian(image, angle, x, y):
     # main
 
 
-img = cv2.imread('rana.jpg', 1)
-ang = int(input('Ingrese el angulo de rotación: '))
-x = int(input('Ingrese el valor de x de la traslacion: '))
-y = int(input('Ingrese el valor de y de la traslacion: '))
+img=cv2.imread('rana.jpg', 1)
 
-Euclidana=Euclidian(img,ang,x,y)
-cv2.imshow('Euclidia', Euclidana)
-cv2.waitKey(0)
+angle = int(input('Ingrese el angulo de rotación: '))
+xin = int(input('Ingrese el valor de x de la traslacion: '))
+yin = int(input('Ingrese el valor de y de la traslacion: '))
+
+cv2.namedWindow ('image')
+cv2.setMouseCallback ('image', recortar )
+cv2.imshow('image', img )
+while ( 1 ) :
+    cv2.setMouseCallback('image', recortar)
+    k = cv2.waitKey ( 1 ) &0xFF
+    if k == ord ( 'g' ):
+       # cv2.imwrite('Recorte.jpg', crop_img)
+       # cv2.destroyAllWindows()
+     #   cv2.namedWindow('image')
+     #   cv2.imshow('image', crop_img)
+        k = cv2.waitKey(0)
+    if k == ord('e'):
+        Transformada=Euclidian(crop_img,angle,xin,yin)
+        cv2.imshow('image', Transformada)
+        cv2.imwrite('SalidaTp5.jpg',Transformada)
+    elif k== ord('q'):
+        break
+cv2.destroyAllWindows ( )
