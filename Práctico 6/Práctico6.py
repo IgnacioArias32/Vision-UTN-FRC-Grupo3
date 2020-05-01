@@ -52,12 +52,6 @@ cv2.imshow('image', img )
 while ( 1 ) :
     cv2.setMouseCallback('image', recortar)
     k = cv2.waitKey ( 1 ) &0xFF
-    if k == ord ( 'g' ):
-       # cv2.imwrite('Recorte.jpg', crop_img)
-       # cv2.destroyAllWindows()
-     #   cv2.namedWindow('image')
-     #   cv2.imshow('image', crop_img)
-        k = cv2.waitKey(0)
     if k == ord('s'):
         Transformada=Euclidian(crop_img,angle,xin,yin,sin)
         cv2.imshow('image', Transformada)
