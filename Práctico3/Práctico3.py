@@ -14,7 +14,7 @@ print(width,height, fps)
 
 framesize = (width, height)
 out = cv2.VideoWriter('output.avi', fourcc, 20.0, framesize)
-delay = fps
+delay=int(1000/fps)
 while (cap.isOpened()):
     ret, frame = cap.read()
     if ret is True:
