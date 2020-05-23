@@ -7,8 +7,11 @@ def recortar ( event , x , y , flags , param ) :
     global ix , iy , crop_img
     if event == cv2.EVENT_LBUTTONDOWN:
         ix , iy = x , y
-    elif event == cv2.EVENT_MOUSEMOVE:
-                crop_img = img[iy:y, ix:x]
+    elif event == cv2.EVENT_LBUTTONUP:
+        crop_img = img[iy:y, ix:x]
+        cv2.rectangle(img, (ix - 1, iy - 1), (x + 1, y + 1), (0, 0, 255),1)
+          # Se suma 1 a las esquinas para que no se vea el rectangulo en el recorte
+        cv2.imshow('image', img)
 
 
 def translate(image, x, y):
