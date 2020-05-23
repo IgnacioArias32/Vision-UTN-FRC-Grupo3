@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 
 
@@ -7,8 +6,13 @@ def recortar ( event , x , y , flags , param ) :
     global ix , iy , crop_img
     if event == cv2.EVENT_LBUTTONDOWN:
         ix , iy = x , y
-    elif event == cv2.EVENT_MOUSEMOVE:
+
+    elif event == cv2.EVENT_LBUTTONUP:
                 crop_img = img[iy:y, ix:x]
+                print(x)
+                print(y)
+                cv2.rectangle(img, (ix-1, iy-1), (x+1, y+1), (0, 0, 255),1) #Se suma 1 a las esquinas para que no se vea el rectangulo en el recorte
+                cv2.imshow('image', img)
 
 img=cv2.imread('rana.jpg', 1)
 
@@ -30,3 +34,4 @@ while ( 1 ) :
         break
 
 cv2.destroyAllWindows ( )
+
