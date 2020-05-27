@@ -32,8 +32,6 @@ def click(event, x, y, flags, param):
                 c2m=(x,y)
                 cv2.rectangle(Transformada, (x, y), (x+2, y+2), (0, 0, 255),-1)
                 cv2.imshow('Paramedir', Transformada)
-                distanciax=c2m[0]-c1m[0]
-                distanciay=c2m[1]-c1m[1]
                 j=j+1
 
     return
@@ -49,9 +47,11 @@ def TransformacionProyectiva(image):
     return dst
 
 
-def Medir(image):
+def Medir():
     patronpx=244.0
     patroncm=9.1
+    distanciax=c2m[0]-c1m[0]
+    distanciay=c2m[1]-c1m[1]
     distanciaxcm=distanciax*patroncm/patronpx
     distanciaycm=distanciay*patroncm/patronpx
     distanciatotalcm=math.sqrt((distanciaxcm*distanciaxcm)+(distanciaycm*distanciaycm))
