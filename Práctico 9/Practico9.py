@@ -54,8 +54,11 @@ def Medir(image):
     patroncm=9.1
     distanciaxcm=distanciax*patroncm/patronpx
     distanciaycm=distanciay*patroncm/patronpx
+    distanciatotalcm=math.sqrt((distanciaxcm*distanciaxcm)+(distanciaycm*distanciaycm))
     print('Medida Horizontal:',abs(distanciaxcm))
     print('Medida Vertical:',abs(distanciaycm))
+    print('Distancia entre los puntos:',abs(distanciatotalcm))
+
 
     # main
 
