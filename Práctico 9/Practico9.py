@@ -55,9 +55,9 @@ def Medir():
     distanciaxcm=distanciax*patroncm/patronpx
     distanciaycm=distanciay*patroncm/patronpx
     distanciatotalcm=math.sqrt((distanciaxcm*distanciaxcm)+(distanciaycm*distanciaycm))
-    print('Medida Horizontal:',abs(distanciaxcm))
-    print('Medida Vertical:',abs(distanciaycm))
-    print('Distancia entre los puntos:',abs(distanciatotalcm))
+    print('Medida Horizontal:',"{:.2f}".format(abs(distanciaxcm)),'cm')
+    print('Medida Vertical:',"{:.2f}".format(abs(distanciaycm)),'cm')
+    print('Distancia entre los puntos:',"{:.2f}".format(abs(distanciatotalcm)),'cm')
 
 
     # main
