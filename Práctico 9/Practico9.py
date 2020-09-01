@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import math
 
 ix, iy = -1, -1
 i=1
@@ -32,6 +33,7 @@ def click(event, x, y, flags, param):
                 c2m=(x,y)
                 cv2.rectangle(Transformada, (x, y), (x+2, y+2), (0, 0, 255),-1)
                 cv2.imshow('Paramedir', Transformada)
+
                 j=j+1
 
     return
@@ -48,17 +50,16 @@ def TransformacionProyectiva(image):
 
 
 def Medir():
-    patronpx=244.0
+    patronpx=244.0  
     patroncm=9.1
-    distanciax=c2m[0]-c1m[0]
-    distanciay=c2m[1]-c1m[1]
+    distanciax = c2m[0] - c1m[0]
+    distanciay = c2m[1] - c1m[1]
     distanciaxcm=distanciax*patroncm/patronpx
     distanciaycm=distanciay*patroncm/patronpx
     distanciatotalcm=math.sqrt((distanciaxcm*distanciaxcm)+(distanciaycm*distanciaycm))
     print('Medida Horizontal:',"{:.2f}".format(abs(distanciaxcm)),'cm')
     print('Medida Vertical:',"{:.2f}".format(abs(distanciaycm)),'cm')
     print('Distancia entre los puntos:',"{:.2f}".format(abs(distanciatotalcm)),'cm')
-
 
     # main
 
@@ -84,7 +85,7 @@ while (1):
         medir=True
         midiendo=True
     if j==3:
-        Medicion=Medir(Transformada)
+        Medicion=Medir()
         cv2.imwrite('SalidaTp9.png',Transformada)
         j=1
 
@@ -95,4 +96,3 @@ while (1):
         medir=False
     if k == ord('q'):
         break
-
